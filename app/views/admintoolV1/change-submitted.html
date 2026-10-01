@@ -1,0 +1,121 @@
+{% extends 'layout.html' %} 
+{% block head %}
+  <link rel="stylesheet" href="/nhsuk-frontend/nhsuk-frontend.min.css">
+  <link rel="stylesheet" href="/assets/sass/main.css">
+  {% endblock %}
+  {% block header %}
+  {% from "header/macro.njk" import header %}
+
+{{ header({
+  logo: {
+    href: "#",
+    ariaLabel: "Prescription administration tool homepage"
+  },
+  service: {
+    text: "Prescription admin tool",
+    href: "#"
+  },
+  account: {
+    items: [
+      {
+        text: "Florence Nightingale (Regional Manager)",
+        icon: true
+      },
+      {
+        text: "Change role",
+        href: "#"
+      },
+      {
+        text: "Log out",
+        href: "#"
+      }
+    ]
+  },
+  navigation: {
+    items: [
+      {
+        text: "Change nominated pharmacy",
+        href: "#"
+      },
+      {
+        text: "Nominations processing",
+        href: "#"
+      }
+    ]
+  }
+}) }}
+
+{% endblock %}
+  
+
+  
+{% block pageTitle %} Create a test prescription
+{%endblock %} 
+{% block beforeContent %} {{ breadcrumb({ href: "/", text: "Home" })
+}} 
+{% endblock %} 
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+ <!--If change is ongoing-->
+ <div class="nhsuk-panel nhsuk-panel--interruption">
+  <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
+    Nominated pharmacy change started
+  </h1>
+</div>
+
+<table class="nhsuk-table">
+
+  <thead class="nhsuk-table__head">
+    <tr class="nhsuk-table__row">
+      <th class="nhsuk-table__header" scope="col">
+        Service Now reference number
+      </th>
+      <th class="nhsuk-table__header nhsuk-table__header--numeric" scope="col">
+        New ODS code
+      </th>
+      <th class="nhsuk-table__header nhsuk-table__header--numeric" scope="col">
+        NHS number file
+      </th>
+       <th class="nhsuk-table__header nhsuk-table__header--numeric" scope="col">
+        Status 
+      </th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr class="nhsuk-table__row">
+      <th class="nhsuk-table__header" scope="row">
+        123456
+      </th>
+      <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+        ABC123
+      </td>
+      <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+        nhs_numbers.csv
+      </td>
+      <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+         <strong class="nhsuk-tag nhsuk-tag--yellow">
+          Processing
+         </strong>
+      </td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+<div class="nhsuk-button-group">
+<a class="nhsuk-button" href="/admintoolV1/start-page">
+  Start another nominated <br> pharmacy change
+</a>
+
+  <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
+    View nominated pharmacy changes <br> that are processing 
+  </button>
+
+</div>
+
+   
+  </div>
+</div>
+{% endblock %}
