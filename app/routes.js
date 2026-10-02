@@ -78,3 +78,20 @@ router.post(
 //    res.redirect("/v2/testpack-prescription-summary");
 //  }
 //},
+
+// Clear session data for admintoolV1 prototype
+function clearAdminFormData(req) {
+  delete req.session.data.ServiceNowNumber;
+  delete req.session.data.NewODSCode;
+  delete req.session.data["file-hint"];
+}
+
+router.get("/admintoolV1/clear-and-start", (req, res) => {
+  clearAdminFormData(req);
+  res.redirect("/admintoolV1/start-page");
+});
+
+router.get("/admintoolV1/clear-and-processing", (req, res) => {
+  clearAdminFormData(req);
+  res.redirect("/admintoolV1/processing-page");
+});

@@ -33,13 +33,14 @@
   },
   navigation: {
     items: [
-      {
+  {
         text: "Change nominated pharmacy",
-        href: "#"
+        href: "/admintoolV1/clear-and-start"
       },
       {
         text: "Nominations processing",
-        href: "#"
+        href: "/admintoolV1/clear-and-processing",
+        active:"true"
       }
     ]
   }
@@ -69,7 +70,7 @@
       Service Now reference number
     </dt>
     <dd class="nhsuk-summary-list__value">
-      123456
+      {{ data.ServiceNowNumber }}
     </dd>
     <dd class="nhsuk-summary-list__actions">
       <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> name</span></a>
@@ -80,7 +81,7 @@
       New ODS code
     </dt>
     <dd class="nhsuk-summary-list__value">
-      ABCD123
+      {{ data.NewODSCode }}
     </dd>
     <dd class="nhsuk-summary-list__actions">
       <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> date of birth</span></a>
@@ -100,9 +101,9 @@
  
 </dl>
 
- <button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+<a class="nhsuk-button" href="/admintoolV1/change-submitted">
   Accept and submit
-</button>
+</a>
 
  
   </div>
