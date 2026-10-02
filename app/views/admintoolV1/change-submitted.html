@@ -33,13 +33,14 @@
   },
   navigation: {
     items: [
-      {
+    {
         text: "Change nominated pharmacy",
-        href: "#"
+        href: "/admintoolV1/clear-and-start"
       },
       {
         text: "Nominations processing",
-        href: "#"
+        href: "/admintoolV1/clear-and-processing",
+        active:"true"
       }
     ]
   }
@@ -56,7 +57,9 @@
 {% endblock %} 
 {% block content %}
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
+  <div class="nhsuk-grid-column-full-width">
+
+ {% if data.exampleHints == "processing" %}   
  <!--If change is ongoing-->
  <div class="nhsuk-panel nhsuk-panel--interruption">
   <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
@@ -71,13 +74,13 @@
       <th class="nhsuk-table__header" scope="col">
         Service Now reference number
       </th>
-      <th class="nhsuk-table__header nhsuk-table__header--numeric" scope="col">
+      <th class="nhsuk-table__header" scope="col">
         New ODS code
       </th>
-      <th class="nhsuk-table__header nhsuk-table__header--numeric" scope="col">
+      <th class="nhsuk-table__header" scope="col">
         NHS number file
       </th>
-       <th class="nhsuk-table__header nhsuk-table__header--numeric" scope="col">
+       <th class="nhsuk-table__header" scope="col">
         Status 
       </th>
     </tr>
@@ -85,15 +88,15 @@
   <tbody class="nhsuk-table__body">
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        123456
+        {{ data.ServiceNowNumber }}
       </th>
-      <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
-        ABC123
+      <td class="nhsuk-table__cell">
+        {{ data.NewODSCode }}
       </td>
-      <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+      <td class="nhsuk-table__cell">
         nhs_numbers.csv
       </td>
-      <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+      <td class="nhsuk-table__cell">
          <strong class="nhsuk-tag nhsuk-tag--yellow">
           Processing
          </strong>
@@ -103,15 +106,16 @@
 
   </tbody>
 </table>
-
+{% endif %}
 <div class="nhsuk-button-group">
-<a class="nhsuk-button" href="/admintoolV1/start-page">
+<a class="nhsuk-button" href= "/admintoolV1/clear-and-start">
   Start another nominated <br> pharmacy change
 </a>
 
-  <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
-    View nominated pharmacy changes <br> that are processing 
-  </button>
+<a class="nhsuk-button nhsuk-button--secondary" href="/admintoolV1/processing-page">
+  View nominated pharmacy changes <br> that are processing
+</a>
+
 
 </div>
 

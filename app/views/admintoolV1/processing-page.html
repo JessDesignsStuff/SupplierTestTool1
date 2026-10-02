@@ -35,11 +35,11 @@
     items: [
       {
         text: "Change nominated pharmacy",
-        href: "/admintoolV1/start-page"
+        href: "/admintoolV1/clear-and-start"
       },
       {
         text: "Nominations processing",
-        href: "#",
+        href: "/admintoolV1/clear-and-processing",
         active:"true"
       }
     ]
@@ -95,10 +95,10 @@
         10th October 2026
       </td>
      <td class="nhsuk-table__cell">
-        123456
+         {{ data.ServiceNowNumber }}
       </td>
       <td class="nhsuk-table__cell">
-        ABC123
+        {{ data.NewODSCode }}
       </td>
       <td class="nhsuk-table__cell">
         nhs_numbers.csv
