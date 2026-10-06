@@ -64,11 +64,18 @@
     Nominated pharmacy change started
   </h1>
 </div>
-{% elif data.nominationAction == "change" and data.exampleHints == "processed" %}
+{% elif data.nominationAction == "change" and data.exampleHints == "processed" and data.transferType == "now" %}
  <!--If change is immediately processed-->
  <div class="nhsuk-panel">
   <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
     Nominated pharmacy change processed
+  </h1>
+</div>
+<!-- If change is scheduled-->
+{% elif data.nominationAction == "change" and data.exampleHints == "processed" and data.transferType == "scheduled" %}
+ <div class="nhsuk-panel nhsuk-panel--interruption">
+  <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
+    Nominated pharmacy change has been scheduled
   </h1>
 </div>
 {% elif data.nominationAction == "remove" %}
@@ -129,7 +136,7 @@
         Start date:
       </th>
       <td class="nhsuk-table__cell">
-        24th September 2026 <br> 10:30 AM
+        {{ data.transferDate }} at {{ data.transferTime }}
       </td>
     </tr>
  
@@ -218,7 +225,7 @@
         Started:
       </th>
       <td class="nhsuk-table__cell">
-        24th September 2026 <br> 10:30 AM
+        {{ data.transferDate }} at {{ data.transferTime }}
       </td>
     </tr>
        <tr class="nhsuk-table__row">
@@ -226,7 +233,7 @@
         Finished
       </th>
       <td class="nhsuk-table__cell">
-        24th September 2026 <br> 11:30 AM
+       {{ data.transferEndDate }} at {{ data.transferEndTime }}
       </td>
     </tr>
   </tbody>
