@@ -95,3 +95,22 @@ router.get("/admintoolV1/clear-and-processing", (req, res) => {
   clearAdminFormData(req);
   res.redirect("/admintoolV1/processing-page");
 });
+
+// Clear session data for admintoolV1a prototype
+function clearAdminFormData1a(req) {
+  delete req.session.data.ServiceNowNumber;
+  delete req.session.data.NewODSCode;
+  delete req.session.data.OldODSCode;
+  delete req.session.data.ServiceNowNumberRem;
+  delete req.session.data.OldODSCodeRem;
+  delete req.session.data["file-hint"];
+}
+router.get("/admintoolV1a/clear-and-start", (req, res) => {
+  clearAdminFormData1a(req);
+  res.redirect("/admintoolV1a/start-page");
+});
+
+router.get("/admintoolV1a/clear-and-processing", (req, res) => {
+  clearAdminFormData1a(req);
+  res.redirect("/admintoolV1a/processing-page");
+});
