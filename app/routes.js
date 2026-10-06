@@ -114,3 +114,40 @@ router.get("/admintoolV1a/clear-and-processing", (req, res) => {
   clearAdminFormData1a(req);
   res.redirect("/admintoolV1a/processing-page");
 });
+
+function formatDateTime(date, timeZone) {
+  return {
+    date: date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone }),
+    time: date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone }),
+  };
+}
+
+router.post("/admintoolV1a/change-answer", function (req, res) {
+  const data = req.session.data;
+  let start, timeZone;
+
+  if (data["contact"] === "now") {
+    start = new Date();
+    timeZone = "Europe/London";
+  } else {
+    const d = data.appointmentDate || {};
+    // Built as UTC so the entered values are not shifted by the server's timezone
+    start = new Date(Date.UTC(d.year, d.month - 1, d.day, d.hour, d.minute));
+    timeZone = "UTC";
+  }
+
+  const end = new Date(start.getTime() + 15 * 60 * 1000);
+
+  const s = formatDateTime(start, timeZone);
+  const e = formatDateTime(end, timeZone);
+
+  data.transferDate = s.date;
+  data.transferTime = s.time;
+  data.transferEndDate = e.date;
+  data.transferEndTime = e.time;
+
+  const isFuture = start.getTime() > Date.now();
+  data.transferType = isFuture ? "scheduled" : "now";
+
+  res.redirect("/admintoolV1a/check-details");
+});

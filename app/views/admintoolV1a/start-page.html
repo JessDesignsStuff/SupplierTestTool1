@@ -77,8 +77,8 @@
      <h2 class="nhsuk-card__heading nhsuk-heading-m">
      Change nominated pharmacy
     </h2>
-    <p class="nhsuk-card__description">Upload a file of NHS numbers to change the nominated pharmacy for patients in bulk. </p>
-  <form action="/admintoolV1a/check-details" novalidate>
+    <p class="nhsuk-card__description">Change the nominated pharmacy for patients in bulk. </p>
+  <form action="/admintoolV1a/change-answer" method="post" novalidate>
     <input type="hidden" name="nominationAction" value="change">
           <div class="nhsuk-form-group">
             <label class="nhsuk-label nhsuk-label--s" for="ServiceNowNumber">
@@ -100,7 +100,7 @@
             </label>
             <input class="nhsuk-input nhsuk-input--width-10" id="OldODSCode" name="OldODSCode" type="text" value="{{ data.OldODSCode }}">
           </div>
-          
+
 <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
@@ -118,7 +118,7 @@
       </div>
    
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+        <input class="nhsuk-radios__input" id="contact-2" name="contact" type="radio" value="schedule" data-aria-controls="conditional-contact-2">
         <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
           Custom date
         </label>
