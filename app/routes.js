@@ -151,3 +151,47 @@ router.post("/admintoolV1a/change-answer", function (req, res) {
 
   res.redirect("/admintoolV1a/check-details");
 });
+
+// Clear session data for admintoolV2 prototype
+function clearAdminFormData2(req) {
+  delete req.session.data.ServiceNowNumber;
+  delete req.session.data.NewODSCode;
+  delete req.session.data.OldODSCode;
+  delete req.session.data.ServiceNowNumberRem;
+  delete req.session.data.OldODSCodeRem;
+  delete req.session.data["file-hint"];
+}
+router.get("/admintoolV2/clear-and-start", (req, res) => {
+  clearAdminFormData2(req);
+  res.redirect("/admintoolV2/start-page");
+});
+
+router.get("/admintoolV2/clear-and-processing", (req, res) => {
+  clearAdminFormData2(req);
+  res.redirect("/admintoolV2/processing-page");
+});
+
+function formatDateTime(date, timeZone) {
+  return {
+    date: date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone }),
+    time: date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone }),
+  };
+}
+
+router.post("/admintoolV2/change-answer", function (req, res) {
+  const data = req.session.data;
+  const timeZone = "Europe/London";
+  const start = new Date();
+  const end = new Date(start.getTime() + 15 * 60 * 1000);
+
+  const s = formatDateTime(start, timeZone);
+  const e = formatDateTime(end, timeZone);
+
+  data.transferDate = s.date;
+  data.transferTime = s.time;
+  data.transferEndDate = e.date;
+  data.transferEndTime = e.time;
+  data.transferType = "now";
+
+  res.redirect("/admintoolV2/check-details");
+});
