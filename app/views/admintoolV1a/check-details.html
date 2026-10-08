@@ -31,14 +31,13 @@
   navigation: {
     items: [
   {
-        text: "Change nominated pharmacy",
-        href: "/admintoolV1a/clear-and-start",
+        text: "Transfer or remove NHS numbers",
+        href: "/admintoolV1a/start-page",
         active:"true"
       },
       {
-        text: "Nominations processing",
-        href: "/admintoolV1a/clear-and-processing"
-        
+        text: "History",
+        href: "/admintoolV1a/processing-page"
       }
     ]
   }
@@ -64,12 +63,12 @@
  
 
     <h2 class="nhsuk-card__heading nhsuk-heading-m">
-    You are going to remove 10,000 nominations from {{ data.OldODSCodeRem }} under the ServiceNow reference {{ data.ServiceNowNumberRem }}
+    You are going to remove 10,000 NHS numbers from pharmacy code {{ data.OldODSCodeRem }}
     </h2>
     
     <div class="nhsuk-button-group">
         <a class="nhsuk-button" href="/admintoolV1a/change-submitted">
-        Accept and submit
+        Confirm removal
         </a>
 
         <a class="nhsuk-button nhsuk-button--secondary" href="/admintoolV1a/clear-and-start">
@@ -86,12 +85,12 @@
  
 
     <h2 class="nhsuk-card__heading nhsuk-heading-m">
-     Check details before changing nominated pharmacy
+     Check transfer details 
     </h2>
    <dl class="nhsuk-summary-list">
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
-      Service Now reference number
+      ServiceNow number
     </dt>
     <dd class="nhsuk-summary-list__value">
       {{ data.ServiceNowNumber }}
@@ -100,20 +99,9 @@
       <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> name</span></a>
     </dd>
   </div>
-  <div class="nhsuk-summary-list__row">
+      <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
-      New ODS code
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      {{ data.NewODSCode }}
-    </dd>
-    <dd class="nhsuk-summary-list__actions">
-      <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> date of birth</span></a>
-    </dd>
-  </div>
-    <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Old ODS code
+      Current pharmacy code
     </dt>
     <dd class="nhsuk-summary-list__value">
       {{ data.OldODSCode }}
@@ -122,9 +110,32 @@
       <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> date of birth</span></a>
     </dd>
   </div>
+   <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Number of NHS numbers to transfer
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      10,000
+    </dd>
+    <dd class="nhsuk-summary-list__actions">
+      
+    </dd>
+  </div>
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
-      Date of transfer 
+      New pharmacy code
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      {{ data.NewODSCode }}
+    </dd>
+    <dd class="nhsuk-summary-list__actions">
+      <a class="nhsuk-link" href="#">Change<span class="nhsuk-u-visually-hidden"> date of birth</span></a>
+    </dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date and time of transfer
     </dt>
     <dd class="nhsuk-summary-list__value">
       {{ data.transferDate }} at {{ data.transferTime }}

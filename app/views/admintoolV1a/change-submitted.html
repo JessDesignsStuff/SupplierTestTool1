@@ -31,14 +31,13 @@
   navigation: {
     items: [
   {
-        text: "Change nominated pharmacy",
-        href: "/admintoolV1a/clear-and-start",
+        text: "Transfer or remove NHS numbers",
+        href: "/admintoolV1a/start-page",
         active:"true"
       },
       {
-        text: "Nominations processing",
-        href: "/admintoolV1a/clear-and-processing"
-        
+        text: "History",
+        href: "/admintoolV1a/processing-page"
       }
     ]
   }
@@ -61,28 +60,28 @@
  
  <div class="nhsuk-panel">
   <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
-    Pharmacy nominations removed
+    NHS numbers removed
   </h1>
 </div> 
 <!-- If change is scheduled-->
 {% elif data.transferType == "scheduled" %}
  <div class="nhsuk-panel nhsuk-panel--interruption">
   <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
-    Nominated pharmacy change has been scheduled
+    NHS number transfer scheduled
   </h1>
 </div>
  {% elif data.nominationAction == "change" and data.exampleHints == "processing" %}   
  <!--If change is ongoing-->
  <div class="nhsuk-panel nhsuk-panel--interruption">
   <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
-    Nominated pharmacy change started
+    NHS numbers transfer processing
   </h1>
 </div>
 {% elif data.nominationAction == "change" and data.exampleHints == "processed" and data.transferType == "now" %}
  <!--If change is immediately processed-->
  <div class="nhsuk-panel">
   <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
-    Nominated pharmacy change processed
+    NHS numbers transferred
   </h1>
 </div>
 
@@ -108,7 +107,7 @@
   <tbody class="nhsuk-table__body">
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Service Now reference number:
+        ServiceNow number
       </th>
       <td class="nhsuk-table__cell">
         {{ data.ServiceNowNumberRem }}
@@ -116,7 +115,7 @@
     </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        ODS code:
+        Pharmacy code
       </th>
       <td class="nhsuk-table__cell">
         {{ data.OldODSCodeRem }}
@@ -124,15 +123,15 @@
     </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Number of successful changes
+        Number of NHS numbers removed
       </th>
       <td class="nhsuk-table__cell">
-        3550
+        9997
       </td>
     </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Number of skipped changes
+        Number of NHS numbers skipped (had already been removed)
       </th>
       <td class="nhsuk-table__cell">
         1
@@ -140,7 +139,7 @@
     </tr>
        <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Number of failed changes
+      Number of failed removals
       </th>
       <td class="nhsuk-table__cell">
         None
@@ -164,7 +163,7 @@
     </tr>
        <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Started:
+        Removal started
       </th>
       <td class="nhsuk-table__cell">
         {{ data.transferDate }} at {{ data.transferTime }}
@@ -172,7 +171,7 @@
     </tr>
        <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Finished
+        Removal finished
       </th>
       <td class="nhsuk-table__cell">
        {{ data.transferEndDate }} at {{ data.transferEndTime }}
@@ -204,7 +203,7 @@
   <tbody class="nhsuk-table__body">
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Service Now reference number:
+        ServiceNow number
       </th>
       <td class="nhsuk-table__cell">
         {{ data.ServiceNowNumber }}
@@ -212,7 +211,7 @@
     </tr>
        <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Old ODS code:
+        Old pharmacy code
       </th>
       <td class="nhsuk-table__cell">
         {{ data.OldODSCode }}
@@ -220,7 +219,7 @@
     </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        New ODS code:
+        New pharmacy code
       </th>
       <td class="nhsuk-table__cell">
         {{ data.NewODSCode }}
@@ -228,16 +227,16 @@
     </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Number of changes
+        Number of NHS numbers to transfer
       </th>
       <td class="nhsuk-table__cell">
-        3550
+        10,000
       </td>
     </tr>
 
        <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Scheduled start date and time:
+        Date and time of transfer
       </th>
       <td class="nhsuk-table__cell">
         {{ data.transferDate }} at {{ data.transferTime }}
@@ -270,7 +269,7 @@
   <tbody class="nhsuk-table__body">
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Service Now reference number:
+        ServiceNow number
       </th>
       <td class="nhsuk-table__cell">
         {{ data.ServiceNowNumber }}
@@ -278,15 +277,23 @@
     </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        ODS code:
+        Old pharmacy code
       </th>
       <td class="nhsuk-table__cell">
         {{ data.OldODSCode }}
       </td>
     </tr>
+     <tr class="nhsuk-table__row">
+      <th class="nhsuk-table__header" scope="row">
+        New pharmacy code
+      </th>
+      <td class="nhsuk-table__cell">
+        {{ data.NewODSCode }}
+      </td>
+    </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Number of changes
+        Number of NHS numbers to be transferred
       </th>
       <td class="nhsuk-table__cell">
         10,000
@@ -295,7 +302,7 @@
 
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Start date:
+        Transfer started
       </th>
       <td class="nhsuk-table__cell">
         {{ data.transferDate }} at {{ data.transferTime }}
@@ -329,15 +336,23 @@
   <tbody class="nhsuk-table__body">
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Service Now reference number:
+        ServiceNow number
       </th>
       <td class="nhsuk-table__cell">
         {{ data.ServiceNowNumber }}
       </td>
     </tr>
+       <tr class="nhsuk-table__row">
+      <th class="nhsuk-table__header" scope="row">
+        Old pharmacy code
+      </th>
+      <td class="nhsuk-table__cell">
+        {{ data.OldODSCode }}
+      </td>
+    </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        New ODS code:
+        New pharmacy code
       </th>
       <td class="nhsuk-table__cell">
         {{ data.NewODSCode }}
@@ -345,15 +360,15 @@
     </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Number of successful changes
+        Number of NHS numbers transferred
       </th>
       <td class="nhsuk-table__cell">
-        3550
+        9997
       </td>
     </tr>
     <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Number of skipped changes
+        Number of NHS numbers skipped (already at new pharmacy code)
       </th>
       <td class="nhsuk-table__cell">
         1
@@ -361,7 +376,7 @@
     </tr>
        <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Number of failed changes
+        Number of NHS numbers failed to transfer
       </th>
       <td class="nhsuk-table__cell">
         None
@@ -385,7 +400,7 @@
     </tr>
        <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Started:
+        Transfer started
       </th>
       <td class="nhsuk-table__cell">
         {{ data.transferDate }} at {{ data.transferTime }}
@@ -393,7 +408,7 @@
     </tr>
        <tr class="nhsuk-table__row">
       <th class="nhsuk-table__header" scope="row">
-        Finished
+        Transfer finished
       </th>
       <td class="nhsuk-table__cell">
        {{ data.transferEndDate }} at {{ data.transferEndTime }}
@@ -411,11 +426,11 @@
 
 <div class="nhsuk-button-group">
 <a class="nhsuk-button" href= "/admintoolV1a/clear-and-start">
-  Start another nominated <br> pharmacy change
+  Start a new transfer or removal
 </a>
 
 <a class="nhsuk-button nhsuk-button--secondary" href="/admintoolV1a/processing-page">
-  View nominated pharmacy changes <br> that are processing
+  View scheduled changes
 </a>
 
 
