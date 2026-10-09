@@ -55,68 +55,128 @@
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full-width">
- 
-    <div class="nhsuk-card">
-  <div class="nhsuk-card__content">
-    <h2 class="nhsuk-card__heading nhsuk-heading-m">
-     Nominated pharmacy changes processing 
-    </h2>
-    
-  <table class="nhsuk-table">
-
-  <thead class="nhsuk-table__head">
-    <tr class="nhsuk-table__row">
-       <th class="nhsuk-table__header" scope="col">
-       Date
-      </th>
-      <th class="nhsuk-table__header" scope="col">
-        Service Now reference number
-      </th>
-      <th class="nhsuk-table__header" scope="col">
-        New ODS code
-      </th>
-      <th class="nhsuk-table__header" scope="col">
-        NHS number file
-      </th>
-       <th class="nhsuk-table__header" scope="col">
-        Status 
-      </th>
-       <th class="nhsuk-table__header" scope="col">
-        Action
-      </th>
-    </tr>
-  </thead>
-  <tbody class="nhsuk-table__body">
-    <tr class="nhsuk-table__row">
-      <td class="nhsuk-table__cell">
-        10th October 2026
-      </td>
-     <td class="nhsuk-table__cell">
-         {{ data.ServiceNowNumber }}
-      </td>
-      <td class="nhsuk-table__cell">
-        {{ data.NewODSCode }}
-      </td>
-      <td class="nhsuk-table__cell">
-        nhs_numbers.csv
-      </td>
-      <td class="nhsuk-table__cell">
-         <strong class="nhsuk-tag nhsuk-tag--yellow">
-          Processing
-         </strong>
-      </td>
-        <td class="nhsuk-table__cell">
-        None
-      </td>
-    </tr>
 
 
-  </tbody>
-</table>
- 
+<div class="nhsuk-tabs" data-module="nhsuk-tabs">
+  <h2 class="nhsuk-tabs__heading">
+    Contents
+  </h2>
+  <ul class="nhsuk-tabs__list">
+    <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
+      <a class="nhsuk-tabs__tab" href="#transfers">
+        Transfers
+      </a>
+    </li>
+    <li class="nhsuk-tabs__list-item">
+      <a class="nhsuk-tabs__tab" href="#removals">
+        Removals
+      </a>
+    </li>
+  </ul>
+
+  <div class="nhsuk-tabs__panel" id="transfers">
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">
+        Transfers
+      </caption>
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" scope="col">
+            Date
+          </th>
+          <th class="nhsuk-table__header" scope="col">
+            ServiceNow number
+          </th>
+          <th class="nhsuk-table__header" scope="col">
+            Old Pharmacy code
+          </th>
+          <th class="nhsuk-table__header" scope="col">
+            New Pharmacy code
+          </th>
+          <th class="nhsuk-table__header" scope="col">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            David Francis
+          </td>
+          <td class="nhsuk-table__cell">
+            3
+          </td>
+          <td class="nhsuk-table__cell">
+            0
+          </td>
+            <td class="nhsuk-table__cell">
+            3
+          </td>
+            <td class="nhsuk-table__cell">
+            3
+          </td>
+        </tr>
+       
+      </tbody>
+    </table>
   </div>
+  <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="removals">
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">
+        Removals
+      </caption>
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" scope="col">
+            Date
+          </th>
+          <th class="nhsuk-table__header" scope="col">
+            ServiceNow number
+          </th>
+          <th class="nhsuk-table__header" scope="col">
+            Pharmacy code
+          </th>
+           <th class="nhsuk-table__header" scope="col">
+            NHS numbers removed
+          </th>
+          <th class="nhsuk-table__header" scope="col">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            David Francis
+          </td>
+          <td class="nhsuk-table__cell">
+            24
+          </td>
+          <td class="nhsuk-table__cell">
+            18
+          </td>
+            <td class="nhsuk-table__cell">
+            18
+          </td>
+          <td class="nhsuk-table__cell">
+            18
+          </td>
+        </tr>
+        
+        
+      </tbody>
+    </table>
+  </div>
+
  
 </div>
+
+
+
+
+
+ 
+    
   </div>
 </div>
 {% endblock %}
