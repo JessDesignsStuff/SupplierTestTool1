@@ -195,3 +195,21 @@ router.post("/admintoolV2/change-answer", function (req, res) {
 
   res.redirect("/admintoolV2/check-details");
 });
+
+router.get("/admintoolV2/change-submitted", (req, res, next) => {
+  const { recordType, recordIndex } = req.query;
+  const lists = { transfer: req.session.data.transfers, removal: req.session.data.removals };
+  const list = lists[recordType];
+
+  if (list) {
+    const record = list[Number(recordIndex)];
+    if (!record) {
+      return res.redirect("/admintoolV2/processing-page");
+    }
+    // Locals last for this request only, so manual journeys never see a stale record
+    res.locals.record = record;
+    res.locals.recordType = recordType;
+  }
+
+  next();
+});
