@@ -18,7 +18,7 @@
   account: {
     items: [
       {
-        text: "Florence Nightingale (Regional Manager)",
+        text: "Leon S Kennedy (Regional Manager)",
         icon: true
       },
      
@@ -49,9 +49,7 @@
   
 {% block pageTitle %} Create a test prescription
 {%endblock %} 
-{% block beforeContent %} {{ breadcrumb({ href: "/", text: "Home" })
-}} 
-{% endblock %} 
+
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
@@ -139,7 +137,7 @@
   </div>
     <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
-      File of nhs numbers
+      File of NHS numbers
     </dt>
     <dd class="nhsuk-summary-list__value">
       nhsNumbers.csv
@@ -164,7 +162,7 @@
 </dl>
 
 <div class="nhsuk-button-group">
-  <a class="nhsuk-button" href="/admintoolV2/change-submitted">
+  <a class="nhsuk-button" href="{{ '/admintoolV2/spinner' if data.exampleHints == 'processing' else '/admintoolV2/change-submitted' }}">
   Confirm and start transfer 
 </a>
 <a class="nhsuk-button nhsuk-button--secondary" href="/admintoolV2/clear-and-start">
