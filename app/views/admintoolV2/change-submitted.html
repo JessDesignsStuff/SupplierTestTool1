@@ -18,7 +18,7 @@
   account: {
     items: [
       {
-        text: "Florence Nightingale (Regional Manager)",
+        text: "Leon S Kennedy (Regional Manager)",
         icon: true
       },
     
@@ -45,14 +45,19 @@
 }) }}
 
 {% endblock %}
-  
+{% block beforeContent %}
+  {% if record %}
+    {{ backLink({
+      href: "/admintoolV2/processing-page#" + ("removals" if recordType == "removal" else "transfers"),
+      text: "Back"
+    }) }}
+  {% endif %}
+{% endblock %}
 
   
 {% block pageTitle %} Create a test prescription
 {%endblock %} 
-{% block beforeContent %} {{ breadcrumb({ href: "/", text: "Home" })
-}} 
-{% endblock %} 
+
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full-width">
@@ -76,7 +81,7 @@
  <!--If change is ongoing-->
  <div class="nhsuk-panel nhsuk-panel--interruption">
   <h1 class="nhsuk-panel__heading nhsuk-panel__heading--l">
-    NHS numbers transfer processing
+    NHS numbers transferring
   </h1>
 </div>
 
